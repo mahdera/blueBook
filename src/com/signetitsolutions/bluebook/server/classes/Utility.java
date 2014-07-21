@@ -16,6 +16,22 @@ public class Utility {
 		
 	}
 	
+	public static List<String> filterFileNumbersFoundInThisTableOnly(String fromTable){
+		List<String> fileNumberList = new ArrayList<String>();
+		try{
+			String query = "select distinct fT.file_number as fileNumber from "+fromTable+" fT order by modification_date desc";
+			ResultSet rSet = DBConnection.readFromDatabase(query);
+			while(rSet.next()){
+				fileNumberList.add(rSet.getString("fileNumber"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.disconnectDatabase();
+		}
+		return fileNumberList;
+	}
+	
 	public static List<String> filterFileNumbersFoundIn(String fromTable, String notInTable){
 		List<String> fileNumberList = new ArrayList<String>();
 		try{
@@ -37,6 +53,24 @@ public class Utility {
 		try{
 			String query = "select distinct fT.file_number as fileNumber from "+fromTable+" fT where fT.file_number not in ( select nT.file_number from "+notInTable+" nT ) and " +
 					"fT."+columnName+" = "+userId;
+			System.out.println(query);
+			ResultSet rSet = DBConnection.readFromDatabase(query);
+			while(rSet.next()){
+				fileNumberList.add(rSet.getString("fileNumber"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.disconnectDatabase();
+		}
+		return fileNumberList;
+	}
+	
+	public static List<String> filterFileNumbersFoundInThisTableOnlyForUser(String fromTable,String columnName, int userId){
+		List<String> fileNumberList = new ArrayList<String>();
+		try{
+			String query = "select fT.file_number as fileNumber from "+fromTable+" fT where fT."+columnName+" = "+userId;
+			System.out.println(query);
 			ResultSet rSet = DBConnection.readFromDatabase(query);
 			while(rSet.next()){
 				fileNumberList.add(rSet.getString("fileNumber"));

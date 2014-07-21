@@ -307,6 +307,24 @@ public class Investigator {
 		return id;
 	}
 	
+	public static Investigator getInvestigatorByName(String fullName){
+		Investigator investigator = null;
+		try{
+			String query = "select * from tbl_investigator where full_name like '"+fullName+"'";
+			ResultSet rSet = DBConnection.readFromDatabase(query);
+			while(rSet.next()){
+				investigator = new Investigator(rSet.getInt("id"),rSet.getString("investigator_id_number"),
+						rSet.getString("full_name"),rSet.getString("level"),rSet.getInt("modified_by"),
+						rSet.getDate("modification_date"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DBConnection.disconnectDatabase();
+		}
+		return investigator;
+	}
+	
 	public static Investigator getInvestigatorUsingIdNumber(String investigatorIdNumber){
 		Investigator investigator = null;
 		try {

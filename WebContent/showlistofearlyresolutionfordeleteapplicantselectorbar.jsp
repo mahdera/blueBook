@@ -19,7 +19,24 @@
 	 				out.print(lblEnterFileNumber != null ? lblEnterFileNumber : label.getLabelCaption());
 	 			%></label></td>
 			<td>
-				<input type="text" name="txtfilenumber" id="txtfilenumber" style="width:90%"/>
+				<select name="txtfilenumber" id="txtfilenumber" style="width:100%">
+					<option value="" selected="selected">--Select--</option>
+					<%
+						//first I need to get the Investigator object using the account.getUserId() and then the name of the user
+						User user = User.getUser(account.getUserId());
+						Investigator investigator = Investigator.getInvestigatorByName(user.getFullName());
+						List<String> fileNumberList = Utility.filterFileNumbersFoundInThisTableOnly("tbl_early_resolution");
+						if(!fileNumberList.isEmpty()){
+							Iterator<String> fileNumberItr = fileNumberList.iterator();
+							while(fileNumberItr.hasNext()){
+								String fileNumber = fileNumberItr.next();
+								%>
+									<option value="<%=fileNumber%>"><%=fileNumber %></option>
+								<%
+							}
+						}//end while loop
+					%>
+				</select>
 			</td>
 			<td>
 				<%
