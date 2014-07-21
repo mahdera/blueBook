@@ -325,7 +325,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$('#txtregistrationdate').glDatePicker();
+		$('#txtregistrationdate').Zebra_DatePicker();
 		
 		$('.jqte-test').jqte();			
 		// settings of status

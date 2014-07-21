@@ -25,9 +25,10 @@
 	<script type="text/javascript" src="jQuery-TE_v.1.4.0/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="jQuery-TE_v.1.4.0/jquery-te-1.4.0.min.js"></script>
 	<link rel="Stylesheet" type="text/css" href="jQuery-TE_v.1.4.0/jquery-te-1.4.0.css" />
+	
 	<!-- for the datetime picker -->
-	<link href="glDatePicker-2.0/styles/glDatePicker.default.css" rel="stylesheet" type="text/css"/>
-	 <script src="glDatePicker-2.0/glDatePicker.min.js"></script>
+	<script type="text/javascript" src="zebra/javascript/zebra_datepicker.js"></script>
+	<link rel="stylesheet" href="zebra/css/default.css" type="text/css">
 	
 	<title>CMS-1.0</title> 
 	<link rel="shortcut icon" href="images/favicon.ico"/>		  
