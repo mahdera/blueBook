@@ -26,7 +26,21 @@
 				label = Label.getLabelUsingLabelId("lblsearchbutton");
 				String serachButtonCaption = searchButtonLabel != null ? searchButtonLabel : label.getLabelCaption();
 			%>
-			<input type="text" name="txtfilenumber" id="txtfilenumber"/>
+			<select name="txtfilenumber" id="txtfilenumber" style="width:20%">
+				<option value="" selected="selected">--Select--</option>
+				<%
+					List<String> fileNumberList = Utility.filterFileNumbersFoundIn("tbl_decision", "tbl_early_resolution");
+					if(!fileNumberList.isEmpty()){
+						Iterator<String> fileNumberItr = fileNumberList.iterator();
+						while(fileNumberItr.hasNext()){
+							String fileNumber = fileNumberItr.next();
+							%>
+								<option value="<%=fileNumber%>"><%=fileNumber %></option>
+							<%
+						}
+					}//end while loop
+				%>
+			</select>			
 			<input type="button" id="btnsearch" value="<%=serachButtonCaption%>"/>
 		</td>
 	</tr>
