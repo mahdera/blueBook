@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="linegraphformemberregistration" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select core_member_count,core_member_line_graph_raw_data.reg_month,core_member_line_graph_raw_data.membership_type as core_member_type,family_member_line_graph_raw_data.membership_type as family_member_type, family_member_count,
+core_member_line_graph_raw_data.reg_month_name
+from core_member_line_graph_raw_data,family_member_line_graph_raw_data
+group by reg_month;]]>
+	</queryString>
+	<field name="core_member_count" class="java.lang.Long"/>
+	<field name="reg_month" class="java.lang.Integer"/>
+	<field name="core_member_type" class="java.lang.String"/>
+	<field name="family_member_type" class="java.lang.String"/>
+	<field name="family_member_count" class="java.lang.Long"/>
+	<field name="reg_month_name" class="java.lang.Object"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Line Graph]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="355" y="43" width="220" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Member Enrollment Report]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="350">
+			<lineChart>
+				<chart>
+					<reportElement x="46" y="47" width="451" height="253"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Core Member"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{reg_month}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{core_member_count}]]></valueExpression>
+						<labelExpression><![CDATA[$F{reg_month_name}.toString()]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Family Member"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{reg_month}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{family_member_count}]]></valueExpression>
+						<labelExpression><![CDATA[$F{reg_month_name}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Beneficiaries"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{reg_month}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{core_member_count} + $F{family_member_count}]]></valueExpression>
+						<labelExpression><![CDATA[$F{reg_month_name}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat tickLabelMask="Month">
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+		</band>
+	</summary>
+</jasperReport>

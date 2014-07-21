@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="serviceutilizationpiechart" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="woredaId" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[select count(health_service_provider_id) as qty,health_service_provider_name from tbl_service_utilization,tbl_member,
+tbl_kebele,tbl_woreda,tbl_health_service_provider where tbl_woreda.id = $P{woredaId} and tbl_kebele.woreda_id = tbl_woreda.id and
+tbl_kebele.id = tbl_member.kebele_id and tbl_member.id = tbl_service_utilization.member_id and
+tbl_service_utilization.health_service_provider_id = tbl_health_service_provider.id
+group by health_service_provider_id;]]>
+	</queryString>
+	<field name="qty" class="java.lang.Long"/>
+	<field name="health_service_provider_name" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<detail>
+		<band height="344">
+			<pieChart>
+				<chart>
+					<reportElement x="30" y="24" width="497" height="286"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{health_service_provider_name}]]></keyExpression>
+					<valueExpression><![CDATA[$F{qty}]]></valueExpression>
+					<labelExpression><![CDATA[$F{health_service_provider_name}]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</detail>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

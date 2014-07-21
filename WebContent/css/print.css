@@ -1,0 +1,22 @@
+@media print {
+  body {
+  	visibility:hidden;  		
+  }
+  
+  table{
+  	border:1;
+  	rules: rows,cols;
+  }
+  
+  #printPreviewDiv, #printReportDiv, #report_to_print, #report_to_print * {
+    visibility:visible;
+    display:block;
+    background:white;
+  }
+  #printReportDiv, #report_to_print, #printPreviewDiv {
+    position:absolute;
+    left:0;
+    top:0;
+    font-size: 12pt;
+  }
+}
