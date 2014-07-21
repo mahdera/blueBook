@@ -179,8 +179,7 @@
 	 				out.print(lblApplicantName != null ? lblApplicantName : label.getLabelCaption());
 	 			%></label></td>
 			<td>
-				<input type="text" name="<%=dateAssignedControlName %>" id="<%=dateAssignedControlName %>" value="<%=investigatorAssignment.getDateAssigned() %>"/>
-				<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('<%=dateAssignedControlName %>');" />
+				<input type="text" name="<%=dateAssignedControlName %>" id="<%=dateAssignedControlName %>" value="<%=investigatorAssignment.getDateAssigned() %>"/>				
 			</td>
 		</tr>
 		<tr style="background:#eee">
@@ -216,6 +215,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var investigatorAssignmentId = "<%=investigatorAssignmentId%>";
+		var dateAssignedControlName = "txtdateassigned" + investigatorAssignmentId;
+		$('#'+dateAssignedControlName).Zebra_DatePicker();
+		
 		var buttonId = "btnupdate" + investigatorAssignmentId;
 			
 		$('.filter_investigator').click(function(){

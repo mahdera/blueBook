@@ -152,8 +152,7 @@
 						<%
 					}else{
 				%>
-						<input id="<%=registrationDateControlName%>" type="text" name="<%=registrationDateControlName%>" value="<%=appeal.getRegistrationDate() %>"/>
-						<img onclick="javascript:NewCssCal('<%=registrationDateControlName%>');" src="sample/images/cal.gif"/>
+						<input id="<%=registrationDateControlName%>" type="text" name="<%=registrationDateControlName%>" value="<%=appeal.getRegistrationDate() %>"/>						
 				<%
 					}
 				%>
@@ -180,6 +179,10 @@
 </form>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var appealId = "<%=appealId %>";
+		var registrationDateControlName = "txtappealdate" + appealId;
+		$('#'+registrationDateControlName).Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
@@ -189,7 +192,7 @@
 			$('.jqte-test').jqte({"status" : jqteStatus})
 		});	
 		
-		var appealId = "<%=appealId %>";
+		
 		var langId = "<%=langId%>";
 		var buttonId = "btnupdate" + appealId;
 		

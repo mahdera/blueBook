@@ -291,8 +291,7 @@
 					<%
 				}else{
 			%>
-					<input type="text" name="txtregistrationdate" id="txtregistrationdate"/>
-					<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('txtregistrationdate');"/>
+					<input type="text" name="txtregistrationdate" id="txtregistrationdate"/>					
 			<%
 				}
 			%>

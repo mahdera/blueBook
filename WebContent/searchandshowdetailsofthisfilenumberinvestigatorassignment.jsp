@@ -144,8 +144,7 @@
 	 				out.print(lblDateAssigned != null ? lblDateAssigned : label.getLabelCaption());
 	 			%></label></td>
 			<td>
-				<input type="text" name="txtdateassigned" id="txtdateassigned"/>
-				<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('txtdateassigned');" />
+				<input type="text" name="txtdateassigned" id="txtdateassigned"/>				
 			</td>
 		</tr>
 		<tr style="background:#eee">
@@ -186,6 +185,9 @@
 %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#txtdateassigned').Zebra_DatePicker();
+		
 		$('.filter_investigator').click(function(){
 			var investigatorLevel = $(this).val();
 			if(investigatorLevel != ""){

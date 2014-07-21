@@ -498,8 +498,7 @@
         					</table>
 					<%
 				}else{
-			%>					
-					<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('<%=registrationDateControlName %>');" />
+			%>							
 					<input type="text" name="<%=registrationDateControlName %>" id="<%=registrationDateControlName %>" value="<%=d.getRegistrationDate() %>"/>
 			<%
 				}
@@ -530,6 +529,11 @@
 </form>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var decisionId = "<%=decisionId%>";
+		var langId = "<%=langId%>";
+		var registrationDateControlName = "txtregistrationdate" + decisionId;
+		$('#'+registrationDateControlName).Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
@@ -539,8 +543,7 @@
 			$('.jqte-test').jqte({"status" : jqteStatus})
 		});		
 
-		var decisionId = "<%=decisionId%>";
-		var langId = "<%=langId%>";
+		
 		
 		//define the control names in here...
 		var caseControlName = "slctcase" + decisionId;

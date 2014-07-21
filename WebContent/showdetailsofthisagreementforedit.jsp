@@ -624,8 +624,7 @@
 								<%
 							}else{
 						%>
-								<input type="text" name="<%=agreementDateControlName %>" id="<%=agreementDateControlName %>"/>
-								<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('<%=agreementDateControlName %>');"/>
+								<input type="text" name="<%=agreementDateControlName %>" id="<%=agreementDateControlName %>"/>								
 						<%
 							}
 						%>						
@@ -664,6 +663,10 @@
 </form>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var agreementId = "<%=agreementId%>";
+		var agreementDateControlName = "txtagreementdate" + agreementId;
+		$('#'+agreementDateControlName).Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
@@ -673,7 +676,7 @@
 			$('.jqte-test').jqte({"status" : jqteStatus})
 		});
 		
-		var agreementId = "<%=agreementId%>";
+		
 		var buttonId = "btnupdate" + agreementId;
 		var langId = "<%=langId %>";
 		

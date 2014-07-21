@@ -137,8 +137,7 @@
 					<%
 				}else{
 			%>
-					<input type="text" name="txtresolutiondate" id="txtresolutiondate"/>
-					<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('txtresolutiondate');"/>
+					<input type="text" name="txtresolutiondate" id="txtresolutiondate"/>					
 			<%
 				}
 			%>
@@ -211,6 +210,9 @@
 %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#txtresolutiondate').Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;

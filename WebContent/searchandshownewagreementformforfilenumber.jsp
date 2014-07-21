@@ -590,8 +590,7 @@
 								<%
 							}else{
 						%>
-								<input type="text" name="txtagreementdate" id="txtagreementdate"/>
-								<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('txtagreementdate');"/>
+								<input type="text" name="txtagreementdate" id="txtagreementdate"/>								
 						<%
 							}
 						%>
@@ -643,6 +642,9 @@
 %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#txtagreementdate').Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;

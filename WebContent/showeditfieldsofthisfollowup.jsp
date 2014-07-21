@@ -629,8 +629,7 @@
 								<%
 							}else{
 						%>
-								<input id="<%=deadLineControlName %>" type="text" name="<%=deadLineControlName %>" value="<%=followup.getDeadline() %>">
-								<img onclick="javascript:NewCssCal('<%=deadLineControlName %>');" src="sample/images/cal.gif">
+								<input id="<%=deadLineControlName %>" type="text" name="<%=deadLineControlName %>" value="<%=followup.getDeadline() %>">								
 						<%
 							}
 						%>						
@@ -831,6 +830,10 @@
 </form>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var id = "<%=id%>";
+		var deadLineControlName = "txtdeadline" + id;
+		$('#'+deadLineControlName).Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
@@ -840,7 +843,7 @@
 			$('.jqte-test').jqte({"status" : jqteStatus})
 		});
 		
-		var id = "<%=id%>";
+		
 		var buttonId = "btnupdate" + id;
 		var langId = "<%=langId%>";
 		

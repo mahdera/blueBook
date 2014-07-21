@@ -168,8 +168,7 @@
 					<%
 				}else{
 			%>
-				<input type="text" name="<%=resolutionDateControlName %>" id="<%=resolutionDateControlName %>" value="<%=earlyObj.getResolutionDate() %>"/>
-				<img src="sample/images/cal.gif" onclick="javascript:NewCssCal('<%=resolutionDateControlName %>');"/>
+				<input type="text" name="<%=resolutionDateControlName %>" id="<%=resolutionDateControlName %>" value="<%=earlyObj.getResolutionDate() %>"/>				
 			<%
 				}
 			%>
@@ -253,6 +252,10 @@
 </form>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var earlyResolutionId = "<%=earlyResolutionId%>";
+		var resolutionDateControlName = "txtresolutiondate" + earlyResolutionId;
+		$('#'+resolutionDateControlName).Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
@@ -262,7 +265,7 @@
 			$('.jqte-test').jqte({"status" : jqteStatus})
 		});
 		
-		var earlyResolutionId = "<%=earlyResolutionId%>";
+		
 		var buttonId = "btnupdate" + earlyResolutionId;
 		var langId = "<%=langId%>";
 		

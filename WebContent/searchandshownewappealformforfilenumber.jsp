@@ -962,8 +962,7 @@
 								<%
 							}else{
 						%>
-								<input id="txtappealdate" type="text" name="txtappealdate"/>
-								<img onclick="javascript:NewCssCal('txtappealdate');" src="sample/images/cal.gif"/>
+								<input id="txtappealdate" type="text" name="txtappealdate"/>								
 						<%
 							}
 						%>						
@@ -1015,6 +1014,9 @@
 %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#txtappealdate').Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;

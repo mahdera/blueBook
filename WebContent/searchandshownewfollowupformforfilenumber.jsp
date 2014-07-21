@@ -568,8 +568,7 @@
 								<%
 							}else{
 						%>
-								<input id="txtdeadline" type="text" name="txtdeadline">
-								<img onclick="javascript:NewCssCal('txtdeadline');" src="sample/images/cal.gif">
+								<input id="txtdeadline" type="text" name="txtdeadline">								
 						<%
 							}
 						%>						
@@ -708,6 +707,9 @@
 %>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#txtdeadline').Zebra_DatePicker();
+		
 		$('.jqte-test').jqte();			
 		// settings of status
 		var jqteStatus = true;
