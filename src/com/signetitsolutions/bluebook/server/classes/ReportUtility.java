@@ -21,7 +21,7 @@ public class ReportUtility {
 		try{
 			String query = "select count(*) as countVal from tbl_decision d, tbl_applicant a, tbl_applicant_address ad " +
 					"where d.applicant_id = a.id and a.id = ad.applicant_id and ad.region_id = "+regionId+" and d.modification_date between " +
-							"'"+startDate+"' and '"+endDate+"' and (d.decision_given = 'Accepted' or d.decision_given = 'ተቀበል')";
+							"'"+startDate+"' and '"+endDate+"' and d.decision_given = 'Accept'";
 			//System.out.println(query);
 			ResultSet rSet = DBConnection.readFromDatabase(query);
 			while(rSet.next()){
@@ -41,7 +41,7 @@ public class ReportUtility {
 		try{
 			String query = "select count(*) as countVal from tbl_decision d, tbl_applicant a, tbl_applicant_address ad " +
 					"where d.applicant_id = a.id and a.id = ad.applicant_id and ad.region_id = "+regionId+" and d.modification_date between " +
-							"'"+startDate+"' and '"+endDate+"' and a.sex = '"+sex+"'";
+							"'"+startDate+"' and '"+endDate+"' and a.sex = '"+sex+"' and d.decision_given = 'Accept'";
 			//System.out.println(query);
 			ResultSet rSet = DBConnection.readFromDatabase(query);
 			while(rSet.next()){

@@ -43,15 +43,17 @@
 				String region = regionField.getOptionValue();
 				int totalAcceptedCasesFromRegion = ReportUtility.countHowManyCasesGotAcceptedFromThisRegionDuring(regionField.getId(),startDate,endDate);
 				int totalAcceptedCasesFromRegionMale = ReportUtility.countHowManyCasesGotAcceptedFromThisRegionDuringAndSex(regionField.getId(),startDate,endDate,"Male");
+				int totalAcceptedCasesFromRegionFemale = ReportUtility.countHowManyCasesGotAcceptedFromThisRegionDuringAndSex(regionField.getId(),startDate,endDate,"Female");
+				int totalAcceptedCasesFromRegionNotIdentified = ReportUtility.countHowManyCasesGotAcceptedFromThisRegionDuringAndSex(regionField.getId(),startDate,endDate,"Not Identified");				
 				%>
 					<tr>
 						<td><%=ctr++ %></td>
 						<td><%=region %></td>
 						<td align="center"><%=totalAcceptedCasesFromRegion %></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td align="center"><%=totalAcceptedCasesFromRegionMale %></td>
+						<td align="center"><%=totalAcceptedCasesFromRegionFemale %></td>
+						<td align="center"><%=totalAcceptedCasesFromRegionNotIdentified %></td>
+						<td align="center"><%=totalAcceptedCasesFromRegion %></td>
 						<td></td>
 						<td></td>
 						<td></td>
